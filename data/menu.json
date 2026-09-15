@@ -1,0 +1,453 @@
+[
+  {
+    "id": 1,
+    "sr": 1,
+    "category": "Dosa",
+    "name": "Idly Sambhar (180g - 4 Pcs)",
+    "price": 149,
+    "veg": true,
+    "spicy": false
+  },
+  {
+    "id": 2,
+    "sr": 2,
+    "category": "Dosa",
+    "name": "Ghee Podi Idly (190g - 4 Pcs)",
+    "price": 179,
+    "veg": true,
+    "spicy": false
+  },
+  {
+    "id": 3,
+    "sr": 3,
+    "category": "Dosa",
+    "name": "Simple Plain Dosa (120g)",
+    "price": 140,
+    "veg": true,
+    "spicy": false
+  },
+  {
+    "id": 4,
+    "sr": 4,
+    "category": "Dosa",
+    "name": "Kids Spl. Set Dosa (Mini - 2 Pcs) (180g)",
+    "price": 169,
+    "veg": true,
+    "spicy": false
+  },
+  {
+    "id": 5,
+    "sr": 5,
+    "category": "Dosa",
+    "name": "Masala Dosa (180g)",
+    "price": 169,
+    "veg": true,
+    "spicy": false
+  },
+  {
+    "id": 6,
+    "sr": 6,
+    "category": "Dosa",
+    "name": "Podi Masala Dosa (180g)",
+    "price": 179,
+    "veg": true,
+    "spicy": false
+  },
+  {
+    "id": 7,
+    "sr": 7,
+    "category": "Dosa",
+    "name": "Bangalore Masala Dosa (180g)",
+    "price": 179,
+    "veg": true,
+    "spicy": true
+  },
+  {
+    "id": 8,
+    "sr": 8,
+    "category": "Dosa",
+    "name": "Onion Masala Dosa (180g)",
+    "price": 179,
+    "veg": true,
+    "spicy": false
+  },
+  {
+    "id": 9,
+    "sr": 9,
+    "category": "Dosa",
+    "name": "Chocolate Dosa (150g)",
+    "price": 179,
+    "veg": true,
+    "spicy": false
+  },
+  {
+    "id": 10,
+    "sr": 10,
+    "category": "Dosa",
+    "name": "Schezwan Masala Dosa (180g)",
+    "price": 189,
+    "veg": true,
+    "spicy": true
+  },
+  {
+    "id": 11,
+    "sr": 11,
+    "category": "Dosa",
+    "name": "Coconut Masala Dosa (180g)",
+    "price": 189,
+    "veg": true,
+    "spicy": false
+  },
+  {
+    "id": 12,
+    "sr": 12,
+    "category": "Dosa",
+    "name": "Mysore Masala Dosa (180g)",
+    "price": 189,
+    "veg": true,
+    "spicy": false
+  },
+  {
+    "id": 13,
+    "sr": 13,
+    "category": "Dosa",
+    "name": "Mysore Onion Masala Dosa (180g)",
+    "price": 189,
+    "veg": true,
+    "spicy": false
+  },
+  {
+    "id": 14,
+    "sr": 14,
+    "category": "Dosa",
+    "name": "Schezwan Onion Masala Dosa (180g)",
+    "price": 189,
+    "veg": true,
+    "spicy": true
+  },
+  {
+    "id": 15,
+    "sr": 15,
+    "category": "Dosa",
+    "name": "Andhra Spl. Veg Mayo Dosa (180g)",
+    "price": 189,
+    "veg": true,
+    "spicy": false
+  },
+  {
+    "id": 16,
+    "sr": 16,
+    "category": "Paper Dosa",
+    "name": "Butter Paper Dosa with Masala Separate (160g)",
+    "price": 169,
+    "veg": true,
+    "spicy": false
+  },
+  {
+    "id": 17,
+    "sr": 17,
+    "category": "Paper Dosa",
+    "name": "Spicy Garlic Paper Dosa (110g)",
+    "price": 179,
+    "veg": true,
+    "spicy": true
+  },
+  {
+    "id": 18,
+    "sr": 18,
+    "category": "Paper Dosa",
+    "name": "Mysore Paper Dosa (110g)",
+    "price": 179,
+    "veg": true,
+    "spicy": false
+  },
+  {
+    "id": 19,
+    "sr": 19,
+    "category": "Paper Dosa",
+    "name": "Cheesee Spicy Paper Dosa (170g)",
+    "price": 209,
+    "veg": true,
+    "spicy": false
+  },
+  {
+    "id": 20,
+    "sr": 20,
+    "category": "Paper Dosa",
+    "name": "Special Ghee Roast Dosa & Masala Separate (170g)",
+    "price": 189,
+    "veg": true,
+    "spicy": false
+  },
+  {
+    "id": 24,
+    "sr": 24,
+    "category": "Benne Dosa",
+    "name": "Spl. Benne Dosa with Ghee & Podi",
+    "price": 209,
+    "veg": true,
+    "spicy": false
+  },
+  {
+    "id": 25,
+    "sr": 25,
+    "category": "Benne Dosa",
+    "name": "Mysore Onion Benne Dosa",
+    "price": 229,
+    "veg": true,
+    "spicy": false
+  },
+  {
+    "id": 26,
+    "sr": 26,
+    "category": "Benne Dosa",
+    "name": "Schezwan Onion Benne Dosa",
+    "price": 229,
+    "veg": true,
+    "spicy": true
+  },
+  {
+    "id": 27,
+    "sr": 27,
+    "category": "Benne Dosa",
+    "name": "Spicy Chutney Benne Dosa",
+    "price": 229,
+    "veg": true,
+    "spicy": false
+  },
+  {
+    "id": 28,
+    "sr": 28,
+    "category": "Benne Dosa",
+    "name": "Twin Cheese Benne Dosa (Mysore/Schezwan)",
+    "price": 249,
+    "veg": true,
+    "spicy": false
+  },
+  {
+    "id": 29,
+    "sr": 29,
+    "category": "Benne Dosa",
+    "name": "Club Sandwich Cheese Uttapam",
+    "price": 299,
+    "veg": true,
+    "spicy": false,
+    "tag": "New"
+  },
+  {
+    "id": 30,
+    "sr": 30,
+    "category": "Benne Dosa",
+    "name": "Kids Special Mini Benne Dosa",
+    "price": 169,
+    "veg": true,
+    "spicy": false,
+    "tag": "New",
+    "trending": true,
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Uttapam.jpg?width=700"
+  },
+  {
+    "id": 31,
+    "sr": 31,
+    "category": "Finger Licking Dosa's",
+    "name": "Spring Dosa (240g)",
+    "price": 289,
+    "veg": true,
+    "spicy": false
+  },
+  {
+    "id": 32,
+    "sr": 32,
+    "category": "Finger Licking Dosa's",
+    "name": "South Special - C.C.C Dosa (240g)",
+    "price": 299,
+    "veg": true,
+    "spicy": false
+  },
+  {
+    "id": 33,
+    "sr": 33,
+    "category": "Finger Licking Dosa's",
+    "name": "Most Loved - Jini Dosa (240g)",
+    "price": 299,
+    "veg": true,
+    "spicy": false,
+    "trending": true,
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Masala%20dosa%2001.jpg?width=700"
+  },
+  {
+    "id": 34,
+    "sr": 34,
+    "category": "Finger Licking Dosa's",
+    "name": "Saffron Cheese Burst Dosa (260g)",
+    "price": 299,
+    "veg": true,
+    "spicy": false
+  },
+  {
+    "id": 35,
+    "sr": 35,
+    "category": "Finger Licking Dosa's",
+    "name": "Dosa Do-Minos (260g)",
+    "price": 299,
+    "veg": true,
+    "spicy": false,
+    "tag": "New",
+    "trending": true,
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Mysore%20Masala%20Dosa.jpg?width=700"
+  },
+  {
+    "id": 36,
+    "sr": 36,
+    "category": "Finger Licking Dosa's",
+    "name": "Bhahubali Dosa (260g)",
+    "price": 299,
+    "veg": true,
+    "spicy": true,
+    "trending": true,
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Paper%20Masala%20Dosa.jpg?width=700"
+  },
+  {
+    "id": 37,
+    "sr": 37,
+    "category": "Dosa Wraps",
+    "name": "Pizza Dosa Wrap (180gm)",
+    "price": 229,
+    "veg": true,
+    "spicy": false,
+    "tag": "New"
+  },
+  {
+    "id": 38,
+    "sr": 38,
+    "category": "Dosa Wraps",
+    "name": "Creamy Cheese Corn Wrap (180gm)",
+    "price": 259,
+    "veg": true,
+    "spicy": false,
+    "tag": "New"
+  },
+  {
+    "id": 39,
+    "sr": 39,
+    "category": "Dosa Wraps",
+    "name": "Medu Vada (180g - 4 Pcs) - Weekend Only (Sat & Sun)",
+    "price": 169,
+    "veg": true,
+    "spicy": false,
+    "trending": true,
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Medu%20Vada.JPG?width=700"
+  },
+  {
+    "id": 41,
+    "sr": 41,
+    "category": "Uthappam",
+    "name": "Mix Uthappam (200g)",
+    "price": 169,
+    "veg": true,
+    "spicy": false
+  },
+  {
+    "id": 42,
+    "sr": 42,
+    "category": "Uthappam",
+    "name": "Chilli Cheese Uthappam (210g)",
+    "price": 199,
+    "veg": true,
+    "spicy": true
+  },
+  {
+    "id": 43,
+    "sr": 43,
+    "category": "Uthappam",
+    "name": "Andhra Spl. Veg Uthappam - Tomato, Onion, Capsicum, Cheese & Spl. Gun Powder (250g)",
+    "price": 209,
+    "veg": true,
+    "spicy": false
+  },
+  {
+    "id": 45,
+    "sr": 45,
+    "category": "New Arrivals",
+    "name": "2 Pcs. Malabar Paratha with Dal Makhani (200g) + 1 Butter Milk (250ml)",
+    "price": 249,
+    "originalPrice": 325,
+    "veg": true,
+    "spicy": false,
+    "tag": "New",
+    "trending": true,
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/A%20Thali%2C%20famous%20South%20Indian%20meal%20served%20on%20a%20banana%20leaf.jpg?width=700"
+  },
+  {
+    "id": 46,
+    "sr": 46,
+    "category": "Bhaath & Rice",
+    "name": "Sambhar Bhaath (300g)",
+    "price": 209,
+    "veg": true,
+    "spicy": false
+  },
+  {
+    "id": 47,
+    "sr": 47,
+    "category": "Bhaath & Rice",
+    "name": "Veg Pulao (Tomato/Onion/Capsicum) (300g)",
+    "price": 209,
+    "veg": true,
+    "spicy": true
+  },
+  {
+    "id": 48,
+    "sr": 48,
+    "category": "Bhaath & Rice",
+    "name": "Dal Makhani (200g) + Plain Rice (150g) Combo",
+    "price": 209,
+    "veg": true,
+    "spicy": false
+  },
+  {
+    "id": 49,
+    "sr": 49,
+    "category": "Bhaath & Rice",
+    "name": "Guntur Special Curd Rice (250g)",
+    "price": 209,
+    "veg": true,
+    "spicy": false
+  },
+  {
+    "id": 50,
+    "sr": 50,
+    "category": "Bhaath & Rice",
+    "name": "Filter Coffee (80% Coffee & 20% Chikori)",
+    "price": 70,
+    "veg": true,
+    "spicy": false
+  },
+  {
+    "id": 100,
+    "sr": 100,
+    "category": "Beverages & Desserts",
+    "name": "Buttermilk (250ml)",
+    "price": 50,
+    "veg": true,
+    "spicy": false
+  },
+  {
+    "id": 101,
+    "sr": 101,
+    "category": "Beverages & Desserts",
+    "name": "Brownie & Ice-Cream - Mini",
+    "price": 151,
+    "veg": true,
+    "spicy": false
+  },
+  {
+    "id": 102,
+    "sr": 102,
+    "category": "Beverages & Desserts",
+    "name": "Brownie & Ice-Cream - Mega",
+    "price": 231,
+    "veg": true,
+    "spicy": false
+  }
+]

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Table QR Generator — R-Andhra Cafe</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+<style>
+  body{background:var(--ink);padding:30px 20px;}
+  .qr-setup{
+    max-width:520px;margin:0 auto 40px;background:var(--surface);border:1px solid var(--border);
+    border-radius:var(--radius-lg);padding:26px;
+  }
+  .qr-setup h1{color:var(--turmeric);font-size:1.3rem;}
+  .qr-setup label{display:block;margin:14px 0 6px;color:var(--cream-dim);font-size:0.85rem;}
+  .qr-setup input{
+    width:100%;background:var(--surface-2);border:1px solid var(--border);color:var(--cream);
+    padding:10px 12px;border-radius:8px;
+  }
+  .qr-setup button{margin-top:18px;}
+  .qr-grid{
+    max-width:1100px;margin:0 auto;display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px;
+  }
+  .qr-tile{
+    background:#fff;color:#1c130d;border-radius:14px;padding:20px;text-align:center;
+  }
+  .qr-tile h3{margin:0 0 4px;font-family:var(--font-display);font-size:1.4rem;}
+  .qr-tile p{margin:0 0 12px;font-size:0.78rem;color:#6b5c46;}
+  .qr-tile .qr-canvas-wrap{display:flex;justify-content:center;}
+  @media print{
+    .qr-setup, .no-print{display:none !important;}
+    body{background:#fff;padding:0;}
+    .qr-grid{grid-template-columns:repeat(2,1fr);}
+    .qr-tile{break-inside:avoid;border:1px dashed #999;}
+  }
+</style>
+</head>
+<body>
+
+<div class="qr-setup no-print">
+  <h1>🍽️ Table QR Generator</h1>
+  <p style="color:var(--cream-dim);font-size:0.88rem;">
+    Generates one scannable QR code per table. Each one links straight to your
+    menu with that table pre-filled, so orders go to the kitchen automatically.
+  </p>
+  <label for="baseUrl">Your website address</label>
+  <input type="text" id="baseUrl" placeholder="https://your-site.onrender.com">
+  <label for="tableCount">Number of tables</label>
+  <input type="number" id="tableCount" min="1" max="100" value="10">
+  <button class="btn btn-primary" id="generateBtn">Generate QR codes</button>
+  <button class="btn btn-ghost" id="printBtn" style="margin-top:10px;">Print all</button>
+</div>
+
+<div class="qr-grid" id="qrGrid"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+  const baseUrlInput = document.getElementById("baseUrl");
+  baseUrlInput.value = window.location.origin;
+
+  function generate() {
+    const base = baseUrlInput.value.trim().replace(/\/$/, "") || window.location.origin;
+    const count = Math.max(1, Math.min(100, Number(document.getElementById("tableCount").value) || 1));
+    const grid = document.getElementById("qrGrid");
+    grid.innerHTML = "";
+
+    for (let i = 1; i <= count; i++) {
+      const tile = document.createElement("div");
+      tile.className = "qr-tile";
+      tile.innerHTML = `
+        <h3>Table ${i}</h3>
+        <p>Scan to order</p>
+        <div class="qr-canvas-wrap" id="qr-${i}"></div>
+      `;
+      grid.appendChild(tile);
+      new QRCode(document.getElementById(`qr-${i}`), {
+        text: `${base}/?table=${i}`,
+        width: 160,
+        height: 160,
+        colorDark: "#1c130d",
+        colorLight: "#ffffff",
+      });
+    }
+  }
+
+  document.getElementById("generateBtn").addEventListener("click", generate);
+  document.getElementById("printBtn").addEventListener("click", () => window.print());
+  generate();
+</script>
+</body>
+</html>

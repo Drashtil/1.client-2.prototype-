@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kitchen Dashboard — R-Andhra Cafe</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/kitchen.css">
+</head>
+<body class="kitchen-body">
+
+<!-- PIN gate -->
+<div class="pin-screen" id="pinScreen">
+  <div class="pin-card">
+    <h1>Kitchen Dashboard</h1>
+    <p>Enter the kitchen PIN to see live orders.</p>
+    <input type="password" id="pinInput" inputmode="numeric" placeholder="PIN" autofocus>
+    <button class="btn btn-primary btn-block" id="pinSubmit">Enter</button>
+    <p class="pin-error" id="pinError" hidden></p>
+  </div>
+</div>
+
+<!-- Dashboard -->
+<div class="kitchen-wrap" id="kitchenWrap" hidden>
+  <header class="kitchen-header">
+    <h1>🍳 R-Andhra Cafe — Live Orders</h1>
+    <div class="view-toggle" id="viewToggle">
+      <button data-view="kanban" class="active">Board</button>
+      <button data-view="tables">By Table</button>
+    </div>
+    <span class="kitchen-status" id="connStatus">Connecting…</span>
+  </header>
+
+  <div class="kitchen-board" id="kanbanView">
+    <div class="kitchen-column" data-status="received">
+      <h2>New <span class="count" id="countReceived">0</span></h2>
+      <div class="kitchen-cards" id="colReceived"></div>
+    </div>
+    <div class="kitchen-column" data-status="preparing">
+      <h2>Preparing <span class="count" id="countPreparing">0</span></h2>
+      <div class="kitchen-cards" id="colPreparing"></div>
+    </div>
+    <div class="kitchen-column" data-status="ready">
+      <h2>Ready <span class="count" id="countReady">0</span></h2>
+      <div class="kitchen-cards" id="colReady"></div>
+    </div>
+    <div class="kitchen-column" data-status="served">
+      <h2>Served today <span class="count" id="countServed">0</span></h2>
+      <div class="kitchen-cards" id="colServed"></div>
+    </div>
+  </div>
+
+  <div class="table-board" id="tableView" hidden></div>
+</div>
+
+<script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+<script src="/js/kitchen.js"></script>
+</body>
+</html>
