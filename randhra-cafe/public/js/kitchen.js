@@ -98,20 +98,34 @@
   async function submitPin() {
     const pin = document.getElementById("pinInput").value.trim();
     const errorEl = document.getElementById("pinError");
+    const btn = document.getElementById("pinSubmit");
     errorEl.hidden = true;
     if (!pin) return;
-    const ok = await tryLogin(pin);
-    if (ok) {
-      enterDashboard(pin);
-    } else {
-      errorEl.textContent = "Incorrect PIN — try again.";
+
+    btn.disabled = true;
+    btn.textContent = "Checking…";
+    try {
+      const ok = await tryLogin(pin);
+      if (ok) {
+        enterDashboard(pin);
+      } else {
+        errorEl.textContent = "Incorrect PIN — try again.";
+        errorEl.hidden = false;
+      }
+    } catch (e) {
+      errorEl.textContent = "Couldn't reach the server. If the site was idle, it may be waking up — wait 20–30 seconds and try again.";
       errorEl.hidden = false;
+    } finally {
+      btn.disabled = false;
+      btn.textContent = "Enter";
     }
   }
 
   // If we already have a PIN from an earlier session, skip straight to the board.
   if (PIN) {
-    tryLogin(PIN).then(ok => { if (ok) enterDashboard(PIN); });
+    tryLogin(PIN)
+      .then(ok => { if (ok) enterDashboard(PIN); })
+      .catch(() => { /* server unreachable right now — just leave the PIN screen showing */ });
   }
 
   async function loadOrders() {
