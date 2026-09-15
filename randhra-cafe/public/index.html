@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>R-Andhra Cafe — Authentic South Indian Dosa, Uthappam &amp; More</title>
+<meta name="description" content="R-Andhra Cafe: 50+ varieties of freshly made South Indian dosa, uthappam, benne dosa and more. Order online for pickup or delivery.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="/img/favicon.png">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<!-- ===== Header ===== -->
+<header class="site-header" id="top">
+  <div class="wrap header-row">
+    <a class="brand" href="#top">
+      <img src="/img/logo.png" alt="R-Andhra Cafe" class="brand-logo">
+    </a>
+    <nav class="main-nav" id="mainNav">
+      <a href="#menu">Menu</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#visit">Visit</a>
+    </nav>
+    <div class="header-actions">
+      <a class="tel" href="tel:9824777123">📞 9824 777 123</a>
+      <button class="cart-btn" id="openCartBtn" aria-label="Open cart">
+        🛒 <span class="cart-count" id="cartCount">0</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Shown only when a table QR code is scanned (?table=N in the URL) -->
+<div class="table-banner" id="tableBanner" hidden>
+  🍽️ Ordering for <strong id="tableBannerNumber"></strong> — your order goes straight to the kitchen.
+</div>
+
+<!-- ===== Hero ===== -->
+<section class="hero">
+  <div class="hero-bg" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/A%20Thali%2C%20famous%20South%20Indian%20meal%20served%20on%20a%20banana%20leaf.jpg?width=1600')"></div>
+  <div class="hero-overlay"></div>
+  <div class="wrap hero-content">
+    <p class="eyebrow-free">Dine-in &amp; online ordering</p>
+    <h1>Delicious Benne Dosa,<br>made the Andhra way.</h1>
+    <p class="hero-sub">More than 50 varieties of dosa, uthappam, benne dosa and thali favourites, cooked fresh to order — just like on our cafe menu board.</p>
+    <div class="hero-cta-row">
+      <a href="#menu" class="btn btn-primary">Order online</a>
+      <a href="#gallery" class="btn btn-ghost">See the food</a>
+    </div>
+    <ul class="hero-stats">
+      <li><strong>50+</strong><span>fresh items</span></li>
+      <li><strong id="reviewAvgStat">—</strong><span>guest rating</span></li>
+      <li><strong>₹500+</strong><span>bill = free chocolates</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== Trending ===== -->
+<section class="trending-section" id="trending">
+  <div class="wrap">
+    <h2 class="section-title">🔥 Trending Now</h2>
+    <p class="section-sub">Guest favourites and new arrivals — tap any dish to zoom in.</p>
+    <div class="trending-row" id="trendingRow"></div>
+  </div>
+</section>
+
+<!-- ===== Menu ===== -->
+<section class="menu-section" id="menu">
+  <div class="wrap">
+    <h2 class="section-title">Our Menu</h2>
+    <p class="section-sub">Dosa is a traditional South Indian item made from special batter — pick a category to browse.</p>
+
+    <div class="category-pills" id="categoryPills"></div>
+
+    <div id="menuGrid" class="menu-grid">
+      <p class="loading-note">Loading menu…</p>
+    </div>
+
+    <div class="fillings-note">
+      <strong>Fillings for any dosa:</strong> Butter +₹40 · Cheese +₹60 · Paneer +₹60 · Swaminarayan style available (no onion &amp; garlic)
+    </div>
+  </div>
+</section>
+
+<!-- ===== Gallery ===== -->
+<section class="gallery-section" id="gallery">
+  <div class="wrap">
+    <h2 class="section-title light">From our kitchen</h2>
+    <div class="gallery-grid" id="galleryGrid">
+      <img loading="lazy" data-zoomable src="https://commons.wikimedia.org/wiki/Special:FilePath/Masala%20dosa%2001.jpg?width=900" alt="Crisp masala dosa served with sambar and chutney">
+      <img loading="lazy" data-zoomable src="https://commons.wikimedia.org/wiki/Special:FilePath/Mysore%20Masala%20Dosa.jpg?width=900" alt="Mysore masala dosa with red chutney">
+      <img loading="lazy" data-zoomable src="https://commons.wikimedia.org/wiki/Special:FilePath/Idli%20Sambar.JPG?width=900" alt="Soft idly with sambar and coconut chutney">
+      <img loading="lazy" data-zoomable src="https://commons.wikimedia.org/wiki/Special:FilePath/Uttapam.jpg?width=900" alt="Thick uthappam topped with onion and vegetables">
+      <img loading="lazy" data-zoomable src="https://commons.wikimedia.org/wiki/Special:FilePath/Paper%20Masala%20Dosa.jpg?width=900" alt="Extra crisp paper dosa">
+      <img loading="lazy" data-zoomable src="https://commons.wikimedia.org/wiki/Special:FilePath/South%20Indian%20filter%20coffee.JPG?width=900" alt="South Indian filter coffee in a steel tumbler and davara">
+    </div>
+  </div>
+</section>
+
+<!-- ===== Reviews ===== -->
+<section class="reviews-section" id="reviews">
+  <div class="wrap">
+    <div class="reviews-head">
+      <div>
+        <h2 class="section-title">What guests are saying</h2>
+        <p class="section-sub" id="reviewSummary">Be the first to leave a review.</p>
+      </div>
+      <button class="btn btn-primary" id="writeReviewBtn">Write a review</button>
+    </div>
+    <div id="reviewList" class="review-list">
+      <p class="loading-note">Loading reviews…</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Visit / Footer info ===== -->
+<section class="visit-section" id="visit">
+  <div class="wrap visit-grid">
+    <div>
+      <h2 class="section-title light">Visit R-Andhra Cafe</h2>
+      <p>Dine-in menu &amp; online orders for pickup or delivery. We serve more than 50+ varieties of freshly cooked items made with the best of ingredients.</p>
+      <ul class="visit-list">
+        <li>📞 <a href="tel:9824777123">9824 777 123</a></li>
+        <li>🥗 Pure vegetarian kitchen</li>
+        <li>💳 We accept Pluxee, Sodexo, UPI, cards &amp; netbanking</li>
+        <li>🍫 Free chocolates on bills of ₹500+</li>
+      </ul>
+      <p class="fine-print">Once an order is placed it cannot be cancelled or changed. Outside food &amp; drinks are not allowed in-cafe.</p>
+    </div>
+    <div class="visit-card">
+      <h3>Order in 3 steps</h3>
+      <ol>
+        <li>Add your favourites to the cart</li>
+        <li>Choose pickup or delivery + payment method</li>
+        <li>Pay via UPI, card, netbanking or scan the counter QR</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap footer-row">
+    <span>© <span id="year"></span> R-Andhra Cafe. Delicious dosas from South.</span>
+    <span>Made for Dine-In &amp; online ordering.</span>
+  </div>
+</footer>
+
+<!-- ===== Cart Drawer ===== -->
+<div class="drawer-backdrop" id="drawerBackdrop"></div>
+<aside class="cart-drawer" id="cartDrawer" aria-label="Your cart">
+  <div class="drawer-head">
+    <h3>Your Cart</h3>
+    <button class="icon-btn" id="closeCartBtn" aria-label="Close cart">✕</button>
+  </div>
+  <div class="drawer-body" id="cartItems">
+    <p class="empty-note">Your cart is empty. Add some dosa!</p>
+  </div>
+  <div class="drawer-foot">
+    <div class="reward-note" id="rewardNote" hidden>🎁 Bill is ₹500+ — free chocolates included!</div>
+    <div class="cart-total-row">
+      <span>Total</span>
+      <strong id="cartTotal">₹0</strong>
+    </div>
+    <button class="btn btn-primary btn-block" id="checkoutBtn" disabled>Checkout</button>
+  </div>
+</aside>
+
+<!-- ===== Checkout Modal ===== -->
+<div class="modal-backdrop" id="checkoutBackdrop">
+  <div class="modal" id="checkoutModal">
+    <button class="icon-btn modal-close" id="closeCheckoutBtn" aria-label="Close">✕</button>
+    <h3>Checkout</h3>
+
+    <div id="checkoutStepForm">
+      <div class="form-group">
+        <label for="custName">Full name</label>
+        <input type="text" id="custName" placeholder="Your name" required>
+      </div>
+      <div class="form-row" id="orderTypeRow">
+        <div class="form-group" id="phoneGroup">
+          <label for="custPhone">Phone number</label>
+          <input type="tel" id="custPhone" placeholder="9XXXXXXXXX">
+        </div>
+        <div class="form-group" id="orderTypeGroup">
+          <label for="orderType">Order type</label>
+          <select id="orderType">
+            <option value="pickup">Dine-in / Pickup</option>
+            <option value="delivery">Delivery</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group" id="tableGroup" hidden>
+        <label>Table</label>
+        <div class="table-locked" id="tableLockedDisplay">Table —</div>
+      </div>
+      <div class="form-group" id="addressGroup" hidden>
+        <label for="custAddress">Delivery address</label>
+        <textarea id="custAddress" rows="2" placeholder="House no, street, area, city"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="orderNotes">Notes (optional)</label>
+        <input type="text" id="orderNotes" placeholder="e.g. less spicy, extra chutney">
+      </div>
+
+      <h4 class="pay-title">Payment method</h4>
+      <div class="pay-tabs" id="payTabs">
+        <button type="button" class="pay-tab active" data-method="upi">UPI</button>
+        <button type="button" class="pay-tab" data-method="card">Card</button>
+        <button type="button" class="pay-tab" data-method="netbanking">Netbanking</button>
+        <button type="button" class="pay-tab" data-method="scanner">Scan QR</button>
+        <button type="button" class="pay-tab" data-method="cod">Pay at counter</button>
+      </div>
+
+      <div class="pay-panel" id="payPanelUpi">
+        <label for="upiId">UPI ID</label>
+        <input type="text" id="upiId" placeholder="yourname@upi">
+        <p class="pay-hint">You'll get a payment request on your UPI app (simulated for this demo).</p>
+      </div>
+
+      <div class="pay-panel" id="payPanelCard" hidden>
+        <label for="cardNumber">Card number</label>
+        <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="cardExpiry">Expiry</label>
+            <input type="text" id="cardExpiry" placeholder="MM/YY" maxlength="5">
+          </div>
+          <div class="form-group">
+            <label for="cardCvv">CVV</label>
+            <input type="password" id="cardCvv" placeholder="•••" maxlength="3">
+          </div>
+        </div>
+        <p class="pay-hint">Card payments are simulated in this demo — no real card data is stored or charged.</p>
+      </div>
+
+      <div class="pay-panel" id="payPanelNetbanking" hidden>
+        <label for="bankSelect">Choose your bank</label>
+        <select id="bankSelect">
+          <option>State Bank of India</option>
+          <option>HDFC Bank</option>
+          <option>ICICI Bank</option>
+          <option>Axis Bank</option>
+          <option>Bank of Baroda</option>
+          <option>Other</option>
+        </select>
+        <p class="pay-hint">You'll be redirected to your bank's secure login (simulated for this demo).</p>
+      </div>
+
+      <div class="pay-panel" id="payPanelScanner" hidden>
+        <div class="qr-box">
+          <svg id="qrPlaceholder" viewBox="0 0 120 120" width="140" height="140" role="img" aria-label="Payment QR code placeholder">
+            <rect width="120" height="120" fill="#f4ead6"/>
+            <g fill="#1c130d">
+              <rect x="8" y="8" width="28" height="28"/><rect x="16" y="16" width="12" height="12" fill="#f4ead6"/>
+              <rect x="84" y="8" width="28" height="28"/><rect x="92" y="16" width="12" height="12" fill="#f4ead6"/>
+              <rect x="8" y="84" width="28" height="28"/><rect x="16" y="92" width="12" height="12" fill="#f4ead6"/>
+              <rect x="44" y="8" width="8" height="8"/><rect x="60" y="8" width="8" height="8"/>
+              <rect x="44" y="24" width="8" height="8"/><rect x="52" y="40" width="8" height="8"/>
+              <rect x="68" y="44" width="8" height="8"/><rect x="84" y="52" width="8" height="8"/>
+              <rect x="44" y="60" width="8" height="8"/><rect x="60" y="60" width="8" height="8"/>
+              <rect x="76" y="68" width="8" height="8"/><rect x="44" y="76" width="8" height="8"/>
+              <rect x="60" y="84" width="8" height="8"/><rect x="76" y="92" width="8" height="8"/>
+              <rect x="92" y="76" width="8" height="8"/><rect x="100" y="60" width="8" height="8"/>
+              <rect x="100" y="92" width="12" height="12"/>
+            </g>
+          </svg>
+        </div>
+        <p class="pay-hint">Placeholder QR — the cafe's real counter scanner will be added here once provided.</p>
+      </div>
+
+      <div class="pay-panel" id="payPanelCod" hidden>
+        <p class="pay-hint">Pay by cash, UPI or card directly at the counter when you collect your order.</p>
+      </div>
+
+      <p class="form-error" id="checkoutError" hidden></p>
+
+      <button class="btn btn-primary btn-block" id="placeOrderBtn">Place order</button>
+    </div>
+
+    <div id="checkoutStepSuccess" hidden>
+      <div class="success-icon">✓</div>
+      <h4>Order placed!</h4>
+      <p>Order ID: <strong id="successOrderId"></strong></p>
+      <p id="successPayMsg" class="pay-hint"></p>
+      <p id="successRewardMsg" class="reward-note" hidden>🎁 Your bill qualifies for free chocolates — enjoy!</p>
+      <button class="btn btn-primary btn-block" id="closeSuccessBtn">Done</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== Image Zoom Lightbox (FLIP-style grow animation) ===== -->
+<div class="zoom-lightbox" id="zoomLightbox">
+  <img id="zoomLightboxImg" src="" alt="">
+</div>
+
+<!-- ===== Item Zoom Detail Modal ===== -->
+<div class="modal-backdrop" id="itemBackdrop">
+  <div class="modal item-modal" id="itemModal">
+    <button class="icon-btn modal-close" id="closeItemBtn" aria-label="Close">✕</button>
+    <div class="item-modal-media" id="itemModalMedia"></div>
+    <div class="item-modal-body">
+      <span class="tag-new" id="itemModalBadge" hidden>Trending</span>
+      <h3 id="itemModalName"></h3>
+      <p class="item-modal-desc" id="itemModalDesc"></p>
+      <div class="item-modal-tags" id="itemModalTags"></div>
+      <div class="item-modal-footer">
+        <span class="item-modal-price" id="itemModalPrice"></span>
+        <div class="qty-stepper" id="itemModalQty">
+          <button id="itemModalDec" aria-label="Remove one">−</button>
+          <span id="itemModalQtyVal">0</span>
+          <button id="itemModalInc" aria-label="Add one">+</button>
+        </div>
+      </div>
+      <button class="btn btn-primary btn-block" id="itemModalAddBtn">Add to cart</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== Review Modal ===== -->
+<div class="modal-backdrop" id="reviewBackdrop">
+  <div class="modal" id="reviewModal">
+    <button class="icon-btn modal-close" id="closeReviewBtn" aria-label="Close">✕</button>
+    <h3>Write a review</h3>
+    <div class="form-group">
+      <label for="reviewName">Your name</label>
+      <input type="text" id="reviewName" placeholder="Your name">
+    </div>
+    <div class="form-group">
+      <label>Rating</label>
+      <div class="star-input" id="starInput">
+        <button type="button" data-star="1">★</button>
+        <button type="button" data-star="2">★</button>
+        <button type="button" data-star="3">★</button>
+        <button type="button" data-star="4">★</button>
+        <button type="button" data-star="5">★</button>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="reviewComment">Your review</label>
+      <textarea id="reviewComment" rows="3" placeholder="Tell us about your visit"></textarea>
+    </div>
+    <p class="form-error" id="reviewError" hidden></p>
+    <button class="btn btn-primary btn-block" id="submitReviewBtn">Submit review</button>
+  </div>
+</div>
+
+<script src="/js/app.js"></script>
+</body>
+</html>
