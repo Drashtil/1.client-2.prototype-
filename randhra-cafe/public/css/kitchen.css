@@ -3,7 +3,7 @@
 .pin-screen{
   position:fixed;inset:0;display:flex;align-items:center;justify-content:center;
   background:var(--ink);z-index:10;
-}
+}.pin-screen[hidden]{display:none;}
 .pin-card{
   background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);
   padding:32px;width:min(320px,90vw);text-align:center;
