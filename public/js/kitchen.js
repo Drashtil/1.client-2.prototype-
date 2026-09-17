@@ -98,20 +98,34 @@
   async function submitPin() {
     const pin = document.getElementById("pinInput").value.trim();
     const errorEl = document.getElementById("pinError");
+    const btn = document.getElementById("pinSubmit");
     errorEl.hidden = true;
     if (!pin) return;
-    const ok = await tryLogin(pin);
-    if (ok) {
-      enterDashboard(pin);
-    } else {
-      errorEl.textContent = "Incorrect PIN — try again.";
+
+    btn.disabled = true;
+    btn.textContent = "Checking…";
+    try {
+      const ok = await tryLogin(pin);
+      if (ok) {
+        enterDashboard(pin);
+      } else {
+        errorEl.textContent = "Incorrect PIN — try again.";
+        errorEl.hidden = false;
+      }
+    } catch (e) {
+      errorEl.textContent = "Couldn't reach the server. If the site was idle, it may be waking up — wait 20–30 seconds and try again.";
       errorEl.hidden = false;
+    } finally {
+      btn.disabled = false;
+      btn.textContent = "Enter";
     }
   }
 
   // If we already have a PIN from an earlier session, skip straight to the board.
   if (PIN) {
-    tryLogin(PIN).then(ok => { if (ok) enterDashboard(PIN); });
+    tryLogin(PIN)
+      .then(ok => { if (ok) enterDashboard(PIN); })
+      .catch(() => { /* server unreachable right now — just leave the PIN screen showing */ });
   }
 
   async function loadOrders() {
@@ -144,6 +158,10 @@
       if (idx !== -1) orders[idx] = updated;
       render();
     });
+    socket.on("order-deleted", ({ id }) => {
+      orders = orders.filter(o => o.id !== id);
+      render();
+    });
   }
 
   async function advanceStatus(orderId, newStatus) {
@@ -153,6 +171,14 @@
       body: JSON.stringify({ status: newStatus }),
     });
     // The server also broadcasts this over the socket, so no local render needed here.
+  }
+
+  async function deleteOrder(orderId) {
+    await fetch(`${API}/orders/${orderId}`, {
+      method: "DELETE",
+      headers: { "x-kitchen-pin": PIN },
+    });
+    // The server also broadcasts "order-deleted" over the socket, so no local render needed here.
   }
 
   function money(n) { return "₹" + Number(n).toLocaleString("en-IN"); }
@@ -185,7 +211,11 @@
           <div class="order-actions">
             <button class="btn-advance" data-order="${order.id}" data-next="${nextStatus}">${NEXT_LABEL[order.status]}</button>
           </div>
-        ` : ""}
+        ` : `
+          <div class="order-actions">
+            <button class="btn-delete" data-delete="${order.id}">Delete</button>
+          </div>
+        `}
       </div>
     `;
   }
@@ -218,6 +248,13 @@
 
     document.querySelectorAll("[data-order]").forEach(btn => {
       btn.addEventListener("click", () => advanceStatus(btn.dataset.order, btn.dataset.next));
+    });
+    document.querySelectorAll("[data-delete]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        if (confirm("Delete this order? This can't be undone.")) {
+          deleteOrder(btn.dataset.delete);
+        }
+      });
     });
   }
 

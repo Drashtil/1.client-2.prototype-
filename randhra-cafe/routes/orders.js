@@ -1,6 +1,6 @@
 const express = require("express");
 const { v4: uuidv4 } = require("uuid");
-const { readData, addRecord, updateRecord } = require("../utils/db");
+const { readData, addRecord, updateRecord, deleteRecord } = require("../utils/db");
 
 const VALID_PAYMENT_METHODS = ["upi", "card", "netbanking", "scanner", "cod"];
 const VALID_STATUSES = ["received", "preparing", "ready", "served", "cancelled"];
@@ -161,6 +161,19 @@ module.exports = function buildOrderRoutes(io) {
     } catch (e) {
       console.error(e);
       res.status(500).json({ error: "Couldn't update the order right now." });
+    }
+  });
+
+  // DELETE /api/orders/:id - kitchen removes an order (e.g. clearing served orders)
+  router.delete("/:id", requireKitchenAuth, async (req, res) => {
+    try {
+      const id = req.params.id.toUpperCase();
+      await deleteRecord("orders", id);
+      io.to("kitchen").emit("order-deleted", { id });
+      res.json({ ok: true });
+    } catch (e) {
+      console.error(e);
+      res.status(500).json({ error: "Couldn't delete the order right now." });
     }
   });
 
