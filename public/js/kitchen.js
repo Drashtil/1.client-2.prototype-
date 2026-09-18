@@ -165,20 +165,44 @@
   }
 
   async function advanceStatus(orderId, newStatus) {
-    await fetch(`${API}/orders/${orderId}/status`, {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json", "x-kitchen-pin": PIN },
-      body: JSON.stringify({ status: newStatus }),
-    });
-    // The server also broadcasts this over the socket, so no local render needed here.
+    try {
+      const res = await fetch(`${API}/orders/${orderId}/status`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json", "x-kitchen-pin": PIN },
+        body: JSON.stringify({ status: newStatus }),
+      });
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        alert(data.error || "Couldn't update this order. Please try again.");
+        return;
+      }
+      const { order } = await res.json();
+      const idx = orders.findIndex(o => o.id === order.id);
+      if (idx !== -1) orders[idx] = order;
+      render();
+      // The server also broadcasts this over the socket to any other open dashboards.
+    } catch (e) {
+      alert("Couldn't reach the server. Check your connection and try again.");
+    }
   }
 
   async function deleteOrder(orderId) {
-    await fetch(`${API}/orders/${orderId}`, {
-      method: "DELETE",
-      headers: { "x-kitchen-pin": PIN },
-    });
-    // The server also broadcasts "order-deleted" over the socket, so no local render needed here.
+    try {
+      const res = await fetch(`${API}/orders/${orderId}`, {
+        method: "DELETE",
+        headers: { "x-kitchen-pin": PIN },
+      });
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        alert(data.error || "Couldn't delete this order. Please try again.");
+        return;
+      }
+      orders = orders.filter(o => o.id !== orderId);
+      render();
+      // The server also broadcasts "order-deleted" over the socket to any other open dashboards.
+    } catch (e) {
+      alert("Couldn't reach the server. Check your connection and try again.");
+    }
   }
 
   function money(n) { return "₹" + Number(n).toLocaleString("en-IN"); }
