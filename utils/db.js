@@ -128,10 +128,22 @@ async function updateRecord(table, id, updatedRecord) {
   writeJsonFile(table, data);
 }
 
+async function deleteRecord(table, id) {
+  assertTable(table);
+  if (pool) {
+    await ready;
+    await pool.query(`DELETE FROM ${table} WHERE id = $1`, [id]);
+    return;
+  }
+  const data = readJsonFile(table).filter((r) => r.id !== id);
+  writeJsonFile(table, data);
+}
+
 module.exports = {
   readData,
   writeData,
   addRecord,
   updateRecord,
+  deleteRecord,
   usingDatabase: !!pool,
 };
